@@ -1,0 +1,36 @@
+# CodeVita Railway station problem
+
+N = int(input("Enter the number of trains: "))
+
+platform = 1  # The train that first arraives will any way take the platform 1 so assuming it to be 1.
+
+arr_time = []
+dep_time = []
+
+for i in range(0, N):
+    arr_time.append(int(input("Enter the arraival time of %d train: "%(i+1))))
+    dep_time.append(int(input("Enter the departure time of %d train: "%(i+1))))
+    
+# print(arr_time)
+# print(dep_time)
+
+while N != 1:
+    
+    tin = min(arr_time)
+    ind1 = arr_time.index(tin)
+    
+    tout = dep_time[ind1]
+    ind2 = dep_time.index(tout)
+    
+    tstay = tin + tout
+    
+    q = arr_time.pop(ind1)
+    w = dep_time.pop(ind2)
+    
+    if min(arr_time) <= tstay:
+        platform += 1
+        
+    N -= 1
+    
+print(platform)
+        
